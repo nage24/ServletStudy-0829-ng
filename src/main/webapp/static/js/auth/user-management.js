@@ -47,7 +47,7 @@ addButton.onclick = () => {
 	if (checkSpaceUserInput()) { // true이면 공백이 없다는 것임. 
 		if (checkUserId()) {
 			alert("추가 가능");
-			
+			send(user)
 		} else {
 			alert("아이디 중복으로 인해 추가 불가능");
 		}
@@ -68,15 +68,20 @@ function saveUser() {
 	
 	$.ajax({
 		async: false,
-		type: post,
+		type: "post",
 		url: "api/v1/user",
 		data: user,
 		dataType: "json",
 		success: (response) => {
-				
+			if(response.status) {
+				alert("추가성공");
+				load();
+			}else{
+				alert("추가실패");
+			}
 		},
 		error: (error) => {
-			
+			console.log(error);
 		}
 	});
 	
