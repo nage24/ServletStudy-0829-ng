@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>사용자 관리 페이지</title>
 <link rel="stylesheet" href="/static/css/user-management.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
@@ -20,7 +20,7 @@
 				<input type="text" class="user-input" placeholder="비밀번호">
 				<input type="text" class="user-input" placeholder="이름">
 				<input type="text" class="user-input" placeholder="이메일">
-				<button class="add-button">추가</button>
+				<button type="button" class="add-button">추가</button>
 			</div>
 			
 			<table>
