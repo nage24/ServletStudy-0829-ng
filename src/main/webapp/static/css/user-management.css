@@ -53,3 +53,7 @@ h1 {
 .input-items {
 	margin: 10px 0px;
 }
+
+.visible {
+	display: none;
+}

@@ -129,7 +129,7 @@ public class UserRepository {
 		String sql = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		// insert는 result set 이 필요없겠죠? 가져올 게 없음. insert update delete는 result set 필요없음. 
+		// insert는 result set 이 필요없다. 가져올 게 없음. insert update delete는 result set 필요없음. 
 		
 		try {
 			con = pool.getConnection();
@@ -150,4 +150,52 @@ public class UserRepository {
 		
 		return result; // 영향 받은 행 갯수 
 	}
+	
+	public int update(User user) {
+		String sql = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			con = pool.getConnection();
+			sql = "update user_dtl set user_phone = ?, user_address = ? where user_code = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user.getUser_phone());
+			pstmt.setString(2, user.getUser_address());
+			pstmt.setInt(3, user.getUser_code());
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		
+		return result;
+	}
+
+	public int delete(int userCode) {
+		String sql = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			con = pool.getConnection();
+			sql = "delete from user_mst where user_code = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, userCode);
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		
+		return result;
+	}
+	
+	
 }

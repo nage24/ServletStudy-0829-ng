@@ -13,5 +13,6 @@ public class UserManagementServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/views/auth/user-management.jsp").forward(request, response);
+		// ctrl f5
 	}
 }

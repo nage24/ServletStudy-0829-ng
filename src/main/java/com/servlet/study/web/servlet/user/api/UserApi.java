@@ -27,10 +27,10 @@ public class UserApi extends HttpServlet {
     	userService = (UserService) config.getServletContext().getAttribute("userService");
     }
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
-
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
 		String userPassword = request.getParameter("userPassword");
@@ -49,9 +49,15 @@ public class UserApi extends HttpServlet {
 		response.getWriter().print(userService.addUser(user));
 	}
 	
-	@Override
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
+//	@Override // override 는 있어도 없어도 됨. 
+//	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		String userCode = request.getParameter("userCode"); // JSON 통신 Request Parameter -> GET POST 만
+//		String phone = request.getParameter("phone");
+//		String address = request.getParameter("address");
+//		
+//		System.out.println("userCode: " + userCode);
+//		System.out.println("phone: " + phone);
+//		System.out.println("address: " + address);
+//	}
+	
 }
