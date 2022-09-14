@@ -24,7 +24,7 @@ public class UserUpdateApi extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-    	userService = (UserService) config.getServletContext();
+    	userService = (UserService) config.getServletContext().getAttribute("userService");
     }
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

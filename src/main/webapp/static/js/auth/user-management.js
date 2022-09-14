@@ -57,7 +57,7 @@ function getUserList(userList) {
 	
 	const updateButtons = document.querySelectorAll(".update-button");
 	
-	for(let i = 0; i < userList.length; i++) {
+	for(let i = 0; i < updateButtons.length; i++) {
 		updateButtons[i].onclick = () => {
 			// alert("버튼 번호: " + i);
 			const phoneText = document.querySelectorAll(".phone-text")[i];
@@ -83,36 +83,34 @@ function getUserList(userList) {
 					async: false,
 					type: "post",
 					url: "/api/v1/user/update",
-					data : {
+					data: {
 						userCode : userCodeText,
 						phone : phoneUpdateInput.value,
 						address : addressUpdateInput.value
 					},
-					dataType : "json",
+					dataType: "json",
 					success: (response) => {
 						alert("수정완료");
 						load();
 					},
 					error: (error) => {
 						console.log(error);
-					}
-					
+					}		
 				});
 			}
-		}
-		
+		}		
 	}
 	
 	
 	const deleteButtons = document.querySelectorAll(".delete-button");
 	
-	for(let i = 0; i < userList.length; i++) {
-		deleteButtons[i].onclcik = () => {
+	for(let i = 0; i < deleteButtons.length; i++) {
+		deleteButtons[i].onclick = () => {
 			
 			const userIdText = document.querySelectorAll(".userid-text")[i].textContent;
 			const userCodeText = document.querySelectorAll(".usercode-text")[i].textContent;
 			
-			if(confirm("${userIdText}의 정보를 정말 지우시겠습니까?")) {
+			if(confirm(`${userIdText}을(를) 정말 지우시겠습니까?`)) {
 				$.ajax({
 					async: false,
 					type: "post",
@@ -129,9 +127,9 @@ function getUserList(userList) {
 						console.log(error);
 					}
 				});
-				}	
-			}					
-		}
+			}	
+		}					
+	}
 }
 
 addButton.onclick = () => {
