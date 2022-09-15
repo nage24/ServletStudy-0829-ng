@@ -28,7 +28,7 @@ load();
 function load() {
 	$.ajax({
 		async: false,
-		type: "put",
+		type: "get",
 		url: "/cookie/test",
 		data: {
 			flag: true	

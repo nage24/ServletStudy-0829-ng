@@ -55,6 +55,8 @@ public class CookieTestServlet extends HttpServlet {
 			
 			jsonObject.put("cookies", jsonObjects);
 			
+			System.out.println(gson.toJson(jsonObject));
+			
 			response.setContentType("application/json; charset=utf-8");
 			response.getWriter().print(gson.toJson(jsonObject));
 			
@@ -65,9 +67,8 @@ public class CookieTestServlet extends HttpServlet {
 		}
 		
 		
-		
-		Cookie[] cookies = request.getCookies(); // 무족건 배열로 가져오게됨. 
-		response.addCookie(null);
+		// Cookie[] cookies = request.getCookies(); // 무족건 배열로 가져오게됨. 
+		// response.addCookie(null);
 		// 클라이언트가 쿠키를 가지고 있음. 요청 때 쿠키에서 정보를 가져와서 응답할 때 쿠키에 정보를 가져다 주는거임. 
 		
 	}
